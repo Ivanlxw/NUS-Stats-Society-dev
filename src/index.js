@@ -5,8 +5,30 @@ import { renderIcons } from './js/view/socialMediaView';
 import { renderContent } from './js/view/contentView';
 
 const state = {};
+/*
+// Properties:
+socialMedia - a List of social media and their ref
+aboutUsActivated - boolean. true if active tab is 'about us'
+*/
 
-renderHeader();
+const tab = renderHeader();
+state.aboutUsActivated = tab.active;
+
+/*
+ Content controller
+*/
+
+document.querySelector('#mdc-tab-1').addEventListener('click', e=> {
+    // e.preventDefault();
+    renderContent('about-us');
+});
+
+document.querySelector('#mdc-tab-2').addEventListener('click', e => {
+    e.preventDefault();
+    // some function
+    console.log('events is clicked')
+    renderContent('events');
+})
 
 /*
  Social Media footer controller
@@ -17,10 +39,6 @@ if(!state.socialMedia) {
     state.socialMedia = sm.getSocialMedia();
 }
 
-renderContent();
-
 state.socialMedia.forEach(elem => {
    renderIcons(elem); 
 });
-
-console.log("Hello!");
