@@ -40,7 +40,7 @@ export const renderHeader = () => {
     </div>
 
 
-    <div id="containder-fluid" style="height:15%">
+    <div id="containder-fluid" style="height:15%; margin:4%">
         <div id="carouselEvents" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -65,5 +65,4 @@ export const renderHeader = () => {
     const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar')); 
     const tab = new MDCTab(document.querySelector('.mdc-tab'));    
     return tab;  // returns the tab object of 'About Us'
-
 }

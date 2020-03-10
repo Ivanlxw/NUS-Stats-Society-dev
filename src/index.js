@@ -18,6 +18,8 @@ state.aboutUsActivated = tab.active;
  Content controller
 */
 
+renderContent('about-us')
+
 document.querySelector('#mdc-tab-1').addEventListener('click', e=> {
     // e.preventDefault();
     renderContent('about-us');
@@ -26,7 +28,6 @@ document.querySelector('#mdc-tab-1').addEventListener('click', e=> {
 document.querySelector('#mdc-tab-2').addEventListener('click', e => {
     e.preventDefault();
     // some function
-    console.log('events is clicked')
     renderContent('events');
 })
 

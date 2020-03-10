@@ -1,4 +1,5 @@
 import { elements } from '../base';
+import {MDCRipple} from '@material/ripple';
 
 const commTemplate = (name, src, desc) => {
     const commiteeHTML = `
@@ -17,6 +18,36 @@ const commTemplate = (name, src, desc) => {
     return commiteeHTML;
 }
 
+const cardTemplate = () => {
+    const eventHTML = `
+    <div class="col" style="margin:2%;">
+        <div class="mdc-card demo-card" style="height:350px; width:350px;">
+            <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+                <div class="mdc-card__media mdc-card__media--16-9 demo-card__media" style="background-image: url("images/past-event1.jpg");">
+                    <div class="mdc-card__media-content demo-card__media-content">
+                        <div class="demo-card__primary">
+                            <h2 class="demo-card__title mdc-typography mdc-typography--headline6">Event1</h2>
+                            <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2">Date1</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdc-card__actions">
+                <div class="demo-card__secondary mdc-typography mdc-typography--body2">Visit ten places on our planet that are undergoing the biggest changes today.</div>
+                <div class="mdc-card__action-icons">
+                    <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites">
+                        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+                        <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+                    </button>
+                    <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true">share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    return eventHTML;
+}
+
 // list of lists: each item should be [name, image, description]
 const comms = [
     ["Publicity", "images/StatsSocLogo.jpg", "The publicity unit designs posters, publicizes events, does event photography and keeps members as well as followers updated about internship openings and upcoming events on social media. Not only that, the team shares amazing articles about Data Science and Statistics on Facebook and LinkedIn on a weekly basis. Also, the team has web developers whose job isn't just to update and manage our official website, but also to create web pages specially for Data Science Competition, the annual flagship event of our society."],
@@ -29,7 +60,6 @@ const comms = [
 ]
 
 export const renderContent = mode => {
-    console.log(mode);
     if (mode == "about-us") {
         const markup = `        
             <div class="container" style="margin:5%;">
@@ -59,8 +89,17 @@ export const renderContent = mode => {
         elements.main.innerHTML = markup
     } else {
         const markup = `
-            okay
+            <div class="container">
+                    ${cardTemplate()}
+                    ${cardTemplate()}            
+            </div>
+            
         `
         elements.main.innerHTML = markup;
+        const selector = '.mdc-button, .mdc-icon-button, .mdc-card__primary-action';
+        const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
+            return new MDCRipple(el);
+        });
+        
     }
 }
