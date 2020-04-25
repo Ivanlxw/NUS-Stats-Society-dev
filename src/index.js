@@ -3,6 +3,7 @@ import { renderHeader } from './js/view/headerView';
 import SocialMedia from './js/model/socialMedia';
 import { renderIcons } from './js/view/socialMediaView';
 import { renderContent } from './js/view/contentView';
+import { getEvents } from './js/model/events';
 
 const state = {};
 /*

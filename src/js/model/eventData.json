@@ -1,0 +1,8 @@
+{
+    "data": [
+        {"event": "Start of Finals", "date": "11/25/2019", "details": "All the best guys!", "link":""}, 
+        {"event": "Exam Pack Collection", "date": "11/03/2019", "details": "Collect at S16!", "link":""}, 
+        {"event": "Christmas Day", "date": "12/25/2019", "details": "Happy Holidays!", "link":"https://www.google.com" },
+        {"event": "Data Science Challenge", "date": "6/26/2019", "details": "Come join our annual data science challenge!", "link":"" }
+    ]
+} 

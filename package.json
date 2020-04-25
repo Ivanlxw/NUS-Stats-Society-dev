@@ -30,6 +30,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
     "bootstrap": "^4.4.1",
-    "material-components-web": "^5.0.0"
+    "material-components-web": "^5.0.0",
+    "node-fetch": "^2.6.0"
   }
 }
