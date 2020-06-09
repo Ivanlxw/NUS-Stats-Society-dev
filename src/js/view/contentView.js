@@ -1,5 +1,5 @@
 import { elements } from '../base';
-import {MDCRipple} from '@material/ripple';
+import { MDCRipple } from '@material/ripple';
 import {comms, aboutUs} from '../model/committee';
 import { getEvents } from '../model/events';
 
@@ -22,11 +22,18 @@ const commTemplate = (name, src, desc) => {
     return commiteeHTML;
 }
 
+const linkIcon = (link) => (
+    `
+    <a href=${link}>
+        <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Link to website" data-mdc-ripple-is-unbounded="true">public</button>
+    </a>
+    `
+)
 
 const cardTemplate = (date, event, details, link) => {
     const eventHTML = `
-    <div class="col" style="margin:2%;">
-        <div class="mdc-card demo-card" style="height:20%; width:350px;">
+    <div class="col-sm-4" style="margin-bottom:2%;">
+        <div class="mdc-card demo-card">
             <div class="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0" style="height:12%;">
                 <div class="demo-card__primary">
                     <h2 class="demo-card__title mdc-typography mdc-typography--headline6">${event}</h2>
@@ -35,15 +42,10 @@ const cardTemplate = (date, event, details, link) => {
                 <div class="demo-card__secondary mdc-typography mdc-typography--body2">${details}</div>
             </div>
             <div class="mdc-card__actions">
-                <!-- IF YOU WANT TO IMPLEMENT SHARE FUNCTION -->
                 <div class="mdc-card__action-icons">
-                    <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="share" data-mdc-ripple-is-unbounded="true">share</button>     
+                    <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true">share</button>     
                     ${
-                        link != "" ? `
-                        <a href=${link}>
-                            <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Link to website" data-mdc-ripple-is-unbounded="true">public</button>
-                        </a>
-                        ` : ""
+                        link != "" ?  linkIcon(link) : link
                     }              
                 </div>
             </div>
@@ -55,7 +57,7 @@ const cardTemplate = (date, event, details, link) => {
 
 export const renderContent = mode => {
     if (mode == "about-us") {
-        const markup = `        
+        let markup = `        
             <div class="container">
                 <h1 class="about-us-header" style="color:orange; text-align:center;">About Us</h1>
                 <p class="about-intro">${aboutUs}</p>
@@ -65,28 +67,30 @@ export const renderContent = mode => {
                 <h1 class="about-us-header" style="text-align:center;color:orange;">
                     Committees
                 </h1>
-
                 ${comms.map(elem => commTemplate(elem[0],elem[1],elem[2]))}
             </div>
         `
         elements.main.innerHTML = markup
     } else if (mode == 'events') {
-        const markup = `
+        let markup = `
             <h1 class="about-us-header" style="color:orange; text-align:center; margin: 3%">UPCOMING EVENTS</h1>
             <div class="container"> 
-                    ${
-                        filteredData.map(ent => {
-                            return(cardTemplate(ent.date, ent.event, ent.details, ent.link))
-                        })
-                    }       
+                <div class="row row-cols-3" id="event-card"></div>
             </div>
-            
         `
         elements.main.innerHTML = markup;
+
+        // add event-cards
+        const upcomingEventsElem = document.querySelector("#event-card");
+        filteredData.forEach(ent => {
+            upcomingEventsElem.insertAdjacentHTML("beforeend", cardTemplate(ent.date, ent.event, ent.details, ent.link));
+        })
+
         const selector = '.mdc-button, .mdc-icon-button, .mdc-card__primary-action';
         const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
             return new MDCRipple(el);
         });   
+        return ripples
     }
 }
 

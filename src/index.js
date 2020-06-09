@@ -1,19 +1,17 @@
-import { elements } from './js/base';
-import { renderHeader } from './js/view/headerView';
+import HeaderModel from "./js/model/header";
 import SocialMedia from './js/model/socialMedia';
-import { renderIcons } from './js/view/socialMediaView';
 import { renderContent } from './js/view/contentView';
-import { getEvents } from './js/model/events';
 
 const state = {};
+const Header = new HeaderModel();
+
 /*
 // Properties:
 socialMedia - a List of social media and their ref
 aboutUsActivated - boolean. true if active tab is 'about us'
 */
 
-const tab = renderHeader();
-state.aboutUsActivated = tab.active;
+state.aboutUsActivated = Header.getTab().active;
 
 /*
  Content controller
@@ -42,5 +40,5 @@ if(!state.socialMedia) {
 }
 
 state.socialMedia.forEach(elem => {
-   renderIcons(elem); 
+   SocialMedia.getIcons(elem); 
 });

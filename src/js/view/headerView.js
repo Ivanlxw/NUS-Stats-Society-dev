@@ -2,7 +2,7 @@ import { elements } from '../base';
 import { MDCTabBar } from '@material/tab-bar';
 import {MDCTab} from '@material/tab';
 
-export const renderHeader = () => {
+export const headerComponent = () => {
     const markup = `
     <div id="logo" class="container-fluid" style="text-align: center;">
         <a href="index.html">
@@ -39,16 +39,9 @@ export const renderHeader = () => {
         </div>
     </div>
 
-
     <div id="containder-fluid" style="height:15%; margin:4%">
         <div id="carouselEvents" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="images/past-event1.jpg" class="d-block w-100" style="height:25rem;">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/past-event1.jpg" class="d-block w-100" style="height:25rem;">
-                </div>
+            <div class="carousel-inner carousel-images">
             </div>
             <a class="carousel-control-prev" href="#carouselEvents" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

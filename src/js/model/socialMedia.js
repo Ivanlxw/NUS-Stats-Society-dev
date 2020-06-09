@@ -1,3 +1,5 @@
+import { renderIcons } from "../view/socialMediaView";
+
 const mediaWebLinks = {
     facebook : "https://www.facebook.com/nus.statistics.soc/",
     linkedin : "https://www.linkedin.com/company/nusstatssoc",
@@ -23,6 +25,10 @@ export default class SocialMedia {
         //     [ 'linkedin', 'https://www.linkedin.com/company/nusstatssoc' ],
         //     [ 'instagram', '#' ]
         //]
+    }
+
+    static getIcons(elem) {
+        renderIcons(elem);
     }
 }
 
