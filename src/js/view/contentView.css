@@ -1,0 +1,14 @@
+.event-details-button {
+    width:100%; 
+    margin:2%; 
+    background-color: #004bee;
+    height: 2.5rem;
+}
+
+#collapseView {
+    width:100%; 
+    font-size: 1.5rem;
+    margin: 2%;
+    display: inline-block;
+    text-align: center;
+}

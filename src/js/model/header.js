@@ -14,28 +14,41 @@ export default class HeaderModel {
         return this.tab;
     }
 
-    carouselDetails(active, imgPath, head, sub) {
-        console.log(head)
+    carouselDetails(active, imgPath, head, date, details) {
         if (active) {
             return `        
             <div class="carousel-item active">
-                <img src=${imgPath} class="d-block w-100" style="height:25rem;">
-                <div class="carousel-caption d-none d-md-block">
-                    <h4 class="carousel-info header-details">${head}</h4>
-                    <p class="carousel-info sub-details">${"6 June 2020"}</p>                
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <img src=${imgPath} class="d-block w-100" style="height:25rem;">
+                        </div>
+                        <div class="col-4">
+                            <h4 class="carousel-info header-details">${head}</h4>
+                            <p class="carousel-info sub-details">${date}</p>
+                            <p class="carousel-info sub-details">${details}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             `
         } else {
             return `
-            <div class="carousel-item">
-                <img src=${imgPath} class="d-block w-100" style="height:25rem;">
-                <div class="carousel-caption d-none d-md-block">
-                    <h4 class="carousel-info header-details">${head}</h4>
-                    <p class="carousel-info sub-details">${sub}</p>                
+                <div class="carousel-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8">
+                                <img src=${imgPath} class="d-block w-100" style="height:25rem;">
+                            </div>
+                            <div class="col-4">
+                                <h4 class="carousel-info header-details">${head}</h4>
+                                <p class="carousel-info sub-details">${date}</p>
+                                <p class="carousel-info sub-details">${details}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            `    
+            `
         }
     }
 
@@ -48,9 +61,15 @@ export default class HeaderModel {
                     true, 
                     imgPath, 
                     "Welcome to NUS Statistics Society", 
-                    "6 June 2020"));
+                    "6 June 2020",
+                    "Event Details"));
             } else {
-                elem.insertAdjacentHTML("beforeend", this.carouselDetails(false, imgPath, "", ""));
+                elem.insertAdjacentHTML("beforeend", this.carouselDetails(
+                    false, 
+                    imgPath, 
+                    "Event title", 
+                    "10 June 2020", 
+                    "Details 2"));
             }
         });
     }

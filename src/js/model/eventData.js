@@ -23,14 +23,6 @@ export const getEvents = (benchmark_date="10/10/2019") => {
     let filteredData = data.data.filter(obj => {
         return(new Date(obj.date) > bench_date)
     })
-
-    // data.data.map(obj => {
-    //     let temp_date = new Date(obj.date)
-    //     if (temp_date > bench_date) {
-    //         filteredData.push(obj)
-    //     }
-    //     //console.log(`${temp_date.getDate()} ${monthMap[temp_date.getMonth()]} ${temp_date.getFullYear()}`)
-    // })
     
     // sort entry by date
     filteredData.sort((a,b) => {
