@@ -1,9 +1,10 @@
 import HeaderModel from "./js/model/header";
+import ContentModel from "./js/model/content";
 import SocialMedia from './js/model/socialMedia';
-import { renderContent } from './js/view/contentView';
 
 const state = {};
 const Header = new HeaderModel();
+
 
 /*
 // Properties:
@@ -17,18 +18,8 @@ state.aboutUsActivated = Header.getTab().active;
  Content controller
 */
 
-renderContent('about-us')
+const contents = new ContentModel();
 
-document.querySelector('#mdc-tab-1').addEventListener('click', e=> {
-    // e.preventDefault();
-    renderContent('about-us');
-});
-
-document.querySelector('#mdc-tab-2').addEventListener('click', e => {
-    e.preventDefault();
-    // some function
-    renderContent('events');
-})
 
 /*
  Social Media footer controller
